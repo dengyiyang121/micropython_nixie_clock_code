@@ -1,0 +1,477 @@
+from machine import Pin
+from lib import RTC_DS3231
+import time
+import random
+rtc = RTC_DS3231.RTC()
+#sec_one
+led0 = Pin(2, Pin.OUT)
+led1 = Pin(3, Pin.OUT)
+led2 = Pin(4, Pin.OUT)
+led3 = Pin(5, Pin.OUT)
+#sec_ten
+led0b = Pin(6, Pin.OUT)
+led1b = Pin(7, Pin.OUT)
+led2b = Pin(8, Pin.OUT)
+led3b = Pin(9, Pin.OUT)
+#min_one
+led0c = Pin(10, Pin.OUT)
+led1c = Pin(11, Pin.OUT)
+led2c = Pin(12, Pin.OUT)
+led3c = Pin(13, Pin.OUT)
+#min_ten
+led0d = Pin(18, Pin.OUT)
+led1d = Pin(19, Pin.OUT)
+led2d = Pin(20, Pin.OUT)
+led3d = Pin(21, Pin.OUT)
+#decimal_points
+d1 = Pin(15, Pin.OUT)
+d2 = Pin(14, Pin.OUT)
+d3 = Pin(16, Pin.OUT)
+d2_dp = Pin(17, Pin.OUT)
+#controls
+button1 = Pin(0, Pin.IN, Pin.PULL_DOWN)
+button2 = Pin(1, Pin.IN, Pin.PULL_DOWN)
+#RGB led state indicater
+import machine, neopixel
+np = neopixel.NeoPixel(machine.Pin(23), 1)
+
+
+
+a = 1
+b = 3
+state = 1
+
+while True:
+    d1.off()
+    d2.off()
+    d2_dp.off()
+    d3.off()
+    d1.on()
+    if a == b:
+        print('error')
+    
+    elif state == 1 and button2.value():
+        state = 0
+        np[0] = (1, 0, 0)
+        np.write()
+        time.sleep(0.5)
+    elif state == 0 and button2.value():
+        state = 1
+        np[0] = (0, 1, 0)
+        np.write()
+        time.sleep(0.5)
+        
+        
+        
+        
+        
+    elif button1.value() and state == 0:
+        for x in range(1,30):
+            y = random.randint(0, 9)
+            decimal_num = y
+            binary_num = "{0:b}".format(decimal_num)
+            print(binary_num)
+
+            num = binary_num
+            listn = [int(i) for i in str(num)]
+
+            print(listn)
+            try:
+                n0 = listn[-1]
+            except:
+                n0 =0
+            try:
+                n1 = listn[-2]
+            except:
+                n1 =0
+            try:
+                n2 = listn[-3]
+            except:
+                n2 =0
+            try:
+                n3 = listn[-4]
+            except:
+                n3 =0
+
+            print(n3, n2, n1, n0)
+
+            if n0 > 0:
+                led0.on()
+            else:
+                led0.off()
+            if n1 > 0:
+                led1.on()
+            else:
+                led1.off()
+            if n2 > 0:
+                led2.on()
+            else:
+                led2.off()
+            if n3 > 0:
+                led3.on()
+            else:
+                led3.off()
+                
+    #-------------------------------------------------------------
+            y = random.randint(0, 9)
+            decimal_num = y
+            binary_num = "{0:b}".format(decimal_num)
+            print(binary_num)
+
+            num = binary_num
+            listn = [int(i) for i in str(num)]
+
+            print(listn)
+            try:
+                n0 = listn[-1]
+            except:
+                n0 =0
+            try:
+                n1 = listn[-2]
+            except:
+                n1 =0
+            try:
+                n2 = listn[-3]
+            except:
+                n2 =0
+            try:
+                n3 = listn[-4]
+            except:
+                n3 =0
+
+            print(n3, n2, n1, n0)
+
+            if n0 > 0:
+                led0b.on()
+            else:
+                led0b.off()
+            if n1 > 0:
+                led1b.on()
+            else:
+                led1b.off()
+            if n2 > 0:
+                led2b.on()
+            else:
+                led2b.off()
+            if n3 > 0:
+                led3b.on()
+            else:
+                led3b.off()
+                
+    #-----------------------------------------------------------------------------------
+            y = random.randint(0, 9)
+            decimal_num = y
+            binary_num = "{0:b}".format(decimal_num)
+            print(binary_num)
+
+            num = binary_num
+            listn = [int(i) for i in str(num)]
+
+            print(listn)
+            try:
+                n0 = listn[-1]
+            except:
+                n0 =0
+            try:
+                n1 = listn[-2]
+            except:
+                n1 =0
+            try:
+                n2 = listn[-3]
+            except:
+                n2 =0
+            try:
+                n3 = listn[-4]
+            except:
+                n3 =0
+
+            print(n3, n2, n1, n0)
+
+            if n0 > 0:
+                led0c.on()
+            else:
+                led0c.off()
+            if n1 > 0:
+                led1c.on()
+            else:
+                led1c.off()
+            if n2 > 0:
+                led2c.on()
+            else:
+                led2c.off()
+            if n3 > 0:
+                led3c.on()
+            else:
+                led3c.off()
+                
+    #--------------------------------------------------------
+            y = random.randint(0, 9)
+            decimal_num = y
+            binary_num = "{0:b}".format(decimal_num)
+            print(binary_num)
+
+            num = binary_num
+            listn = [int(i) for i in str(num)]
+
+            print(listn)
+            try:
+                n0 = listn[-1]
+            except:
+                n0 =0
+            try:
+                n1 = listn[-2]
+            except:
+                n1 =0
+            try:
+                n2 = listn[-3]
+            except:
+                n2 =0
+            try:
+                n3 = listn[-4]
+            except:
+                n3 =0
+
+            print(n3, n2, n1, n0)
+
+            if n0 > 0:
+                led0d.on()
+            else:
+                led0d.off()
+            if n1 > 0:
+                led1d.on()
+            else:
+                led1d.off()
+            if n2 > 0:
+                led2d.on()
+            else:
+                led2d.off()
+            if n3 > 0:
+                led3d.on()
+            else:
+                led3d.off()
+                
+            print('okookookoko')
+            
+            time.sleep(0.03)
+            d1.on()
+        time.sleep(0.3)
+            
+            
+            
+    elif state == 1:
+        d1.off()
+        
+        
+#         d1.toggle()
+#         d2.toggle()
+#         d3.toggle()
+        d2.on()
+        d2_dp.on()
+        
+        t = rtc.DS3231_ReadTime(1)
+        #print(t)
+        listn = []
+        for i in str(t):
+            listn.append(i)
+      
+    # listn = [int(i) for i in str(t)]
+        print(listn)
+        time.sleep(1)
+
+        sec_one = int(listn[7])
+        sec_ten = int(listn[6])
+        min_one = int(listn[4])
+        min_ten = int(listn[3])
+        hor_one = int(listn[1])
+        hor_ten = int(listn[0])
+        
+        decimal_num = min_one
+        binary_num = "{0:b}".format(decimal_num)
+        print(binary_num)
+
+        num = binary_num
+        listn = [int(i) for i in str(num)]
+
+        print(listn)
+        try:
+            n0 = listn[-1]
+        except:
+            n0 =0
+        try:
+            n1 = listn[-2]
+        except:
+            n1 =0
+        try:
+            n2 = listn[-3]
+        except:
+            n2 =0
+        try:
+            n3 = listn[-4]
+        except:
+            n3 =0
+
+        print(n3, n2, n1, n0)
+
+        if n0 > 0:
+            led0.on()
+        else:
+            led0.off()
+        if n1 > 0:
+            led1.on()
+        else:
+            led1.off()
+        if n2 > 0:
+            led2.on()
+        else:
+            led2.off()
+        if n3 > 0:
+            led3.on()
+        else:
+            led3.off()
+            
+#-------------------------------------------------------------
+        decimal_num = min_ten
+        binary_num = "{0:b}".format(decimal_num)
+        print(binary_num)
+
+        num = binary_num
+        listn = [int(i) for i in str(num)]
+
+        print(listn)
+        try:
+            n0 = listn[-1]
+        except:
+            n0 =0
+        try:
+            n1 = listn[-2]
+        except:
+            n1 =0
+        try:
+            n2 = listn[-3]
+        except:
+            n2 =0
+        try:
+            n3 = listn[-4]
+        except:
+            n3 =0
+
+        print(n3, n2, n1, n0)
+
+        if n0 > 0:
+            led0b.on()
+        else:
+            led0b.off()
+        if n1 > 0:
+            led1b.on()
+        else:
+            led1b.off()
+        if n2 > 0:
+            led2b.on()
+        else:
+            led2b.off()
+        if n3 > 0:
+            led3b.on()
+        else:
+            led3b.off()
+            
+#-----------------------------------------------------------------------------------
+        decimal_num = hor_one
+        binary_num = "{0:b}".format(decimal_num)
+        print(binary_num)
+
+        num = binary_num
+        listn = [int(i) for i in str(num)]
+
+        print(listn)
+        try:
+            n0 = listn[-1]
+        except:
+            n0 =0
+        try:
+            n1 = listn[-2]
+        except:
+            n1 =0
+        try:
+            n2 = listn[-3]
+        except:
+            n2 =0
+        try:
+            n3 = listn[-4]
+        except:
+            n3 =0
+
+        print(n3, n2, n1, n0)
+
+        if n0 > 0:
+            led0c.on()
+        else:
+            led0c.off()
+        if n1 > 0:
+            led1c.on()
+        else:
+            led1c.off()
+        if n2 > 0:
+            led2c.on()
+        else:
+            led2c.off()
+        if n3 > 0:
+            led3c.on()
+        else:
+            led3c.off()
+            
+#--------------------------------------------------------
+        decimal_num = hor_ten
+        binary_num = "{0:b}".format(decimal_num)
+        print(binary_num)
+
+        num = binary_num
+        listn = [int(i) for i in str(num)]
+
+        print(listn)
+        try:
+            n0 = listn[-1]
+        except:
+            n0 =0
+        try:
+            n1 = listn[-2]
+        except:
+            n1 =0
+        try:
+            n2 = listn[-3]
+        except:
+            n2 =0
+        try:
+            n3 = listn[-4]
+        except:
+            n3 =0
+
+        print(n3, n2, n1, n0)
+
+        if n0 > 0:
+            led0d.on()
+        else:
+            led0d.off()
+        if n1 > 0:
+            led1d.on()
+        else:
+            led1d.off()
+        if n2 > 0:
+            led2d.on()
+        else:
+            led2d.off()
+        if n3 > 0:
+            led3d.on()
+        else:
+            led3d.off()
+            
+            
+            
+        print('---------------', hor_ten, hor_one, ' : ', min_ten, min_one, ' : ', sec_ten, sec_one, '---------------')
+        
+    else:
+        time.sleep(0.05)
+
+
+
+
+
